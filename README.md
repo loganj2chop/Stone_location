@@ -1,5 +1,5 @@
 # Summer Research Project: Automated Kidney Stone Location Identifier
-### Lesson Plan & Resource Guide
+### Resource Guide
 
 ---
 
@@ -10,7 +10,7 @@ We can currently identify and measure kidney stones in CT images using an AI pip
 2. Uses computer vision to locate the stone via its centroid, and
 3. Classifies its placement using superior/inferior and left/right spatial grids.
 
-This summer, **six expert reviewers** will view CT-identified stones and label each one as **Upper, Mid, Renal Pelvis, or Lower**. Using these expert labels as ground truth, the student will help develop machine learning and visual tools that can **automatically assign stone location** — reducing the need for manual review.
+This summer, **six expert reviewers** will view CT-identified stones and label each one as **Upper, Mid, Renal Pelvis, or Lower**. Using these expert labels as ground truth, we will help develop machine learning and visual tools that can **automatically assign stone location** — reducing the need for manual review.
 
 ## Goals for the Summer
 
@@ -43,7 +43,6 @@ Goal: build an annotated bibliography (aim for 15-20 citations) covering both **
 - "Association Between Nephrolith Size and Location and Grade of Hydronephrosis" — directly relevant to this project's question of how location relates to obstruction severity. [Free full text (PMC)](https://pmc.ncbi.nlm.nih.gov/articles/PMC11857376/)
 - "Association between grades of Hydronephrosis and detection of urinary stones by ultrasound imaging" — stone detection rates across hydronephrosis grades. [Free full text (PMC)](https://pmc.ncbi.nlm.nih.gov/articles/PMC6115544/)
 
-> Tip: have the student keep these in a reference manager (Zotero is free) from day one — it pays off enormously when writing the poster abstract later.
 
 ### 2. Example Posters and Abstracts
 
@@ -57,8 +56,8 @@ Goal: build an annotated bibliography (aim for 15-20 citations) covering both **
 - Google's **Machine Learning Crash Course** has dedicated, free modules on this exact topic:
   - [Working with numerical data](https://developers.google.com/machine-learning/crash-course/numerical-data)
   - [Working with categorical data](https://developers.google.com/machine-learning/crash-course/categorical-data)
-  - Within these, make sure the student understands the distinction between **ordinal** (ordered categories, e.g. hydronephrosis grade), **categorical/nominal** (unordered categories, e.g. stone location), and **numeric** (continuous measurements, e.g. stone size in mm) features.
-- **Target variable for this project:** stone location (Upper / Mid / Renal Pelvis / Lower) is a **multi-class categorical target**. It's worth having the student explicitly connect this back to "multi-class complications" framing — i.e., predicting one of several discrete outcome classes, not a single binary outcome or a continuous number.
+  **categorical/nominal** (unordered categories, e.g. stone location), and **numeric** (continuous measurements, e.g. stone size in mm) features.
+- **Target variable for this project:** stone location (Upper / Mid / Renal Pelvis / Lower) is a **multi-class categorical target**. 
 
 ### 4. Machine Learning Algorithms
 
@@ -69,13 +68,13 @@ Recommended order: logistic regression → decision tree → random forest (each
   - [Logistic Regression](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)
   - [Decision Trees](https://scikit-learn.org/stable/modules/tree.html)
   - [Random Forests (Ensemble methods)](https://scikit-learn.org/stable/modules/ensemble.html#forests-of-randomized-trees)
-- Since the target here has 4 classes (not 2), make sure the student understands **multi-class classification** extensions of these algorithms (e.g. one-vs-rest) before they start modeling.
+
 
 ### 5. Machine Learning Evaluation Measures
 
 - scikit-learn's **Model Evaluation** documentation covers all four measures listed below in one place, with multi-class examples: [Metrics and scoring](https://scikit-learn.org/stable/modules/model_evaluation.html)
 - **StatQuest** again has short, clear videos worth watching alongside the docs: "StatQuest: Machine Learning Fundamentals: The Confusion Matrix," "ROC and AUC, Clearly Explained!"
-- Conceptual cheat sheet for the student's notes:
+
   - **Accuracy** — % of predictions that were correct overall. Can be misleading if classes are imbalanced (e.g., if "Mid" stones are rare).
   - **Confusion Matrix** — a table showing predicted vs. actual class for every stone; the foundation all other metrics are built from. Essential for a 4-class problem like this one, since it shows *which* locations get confused with each other.
   - **F1 Score** — balances precision (how many predicted "Upper" stones really were Upper) and recall (how many actual "Upper" stones were caught); more informative than accuracy when classes are imbalanced.
